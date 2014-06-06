@@ -1,13 +1,18 @@
+
 <!doctype html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <title>Meine Position</title>
 </head>
 <body>
-  <h1>Meine Position</h1>
 
+  <h1>Meine Position</h1>
   <dl>
+
+    <dt>Address</dt>
+    <dd class="js-loc">-</dd>
+
     <dt>Longitude</dt>
     <dd class="js-long">-</dd>
 
@@ -17,24 +22,25 @@
     <dt>Accuracy</dt>
     <dd class="js-acc">-</dd>
 
-    <dt>Address</dt>
-    <dd class="js-address">-</dd>
-
-    <dt>Current Temperature</dt>
+    <dt>Temperature</dt>
     <dd class="js-temp">-</dd>
 
     <dt>Wind Speed</dt>
-    <dd class="js-windspeed">-</dd>
+    <dd class="js-windsp">-</dd>
 
-    <dt>Custom Address</dt>
+    <dt>Custom address</dt>
     <dd class="js-custom-address">
       <input type="text">
-      <a href="#">Search</a><br>
-      <span class="js-custom-address-result"></span>
+      <a href="#">Search</a><br/>
+      <span class="js-cusadd-result"></span>
     </dd>
+
   </dl>
+
+  <div id="out"></div>
 
   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="javascripts/script.js"></script>
+  
 </body>
 </html>

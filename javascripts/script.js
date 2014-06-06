@@ -58,6 +58,9 @@ $.ajax({
     },
     success: function(data) {
         console.log(data);
+        $('.js-custrom-adress').text(data.results[0].geometry.location.lat '+'
+            data.results[0].geometry.location.lng
+            );
     }
 
     });

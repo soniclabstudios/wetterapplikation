@@ -4,6 +4,12 @@ var options = {
   maximumAge: 0
 };
 
+var weatherIcons = {
+  'clear-day': 'B',
+  'clear-night': 'C',
+  'rain': 'R'
+}
+
 
 function success(pos) {
   var crd = pos.coords;
@@ -26,9 +32,9 @@ function success(pos) {
     },
     dataType: 'jsonp',
     success: function(data) {
-        $('.js-temp').text(data.currently.apparentTemperature + 'Â°C');
+        $('.js-temp').text(data.currently.apparentTemperature + '°C');
         $('.js-windsp').text(data.currently.windSpeed + 'm/s');
-      $('.js-icon').text(data.hourly.data[0].icon);
+      $('.js-symbol').text(weatherIcons[data.currently.icon]);
     }
 
   });
@@ -70,6 +76,20 @@ function success(pos) {
         $('.js-long').text(data.results[0].geometry.location.lng);
         $('.js-loc').text(data.results[0].formatted_address);
         $('.js-acc').text(crd.accuracy +'m');
+
+        $.ajax({
+          url: 'https://api.forecast.io/forecast/4cbf11a0b6a5166782b8d4cb9d5defef/' + data.results[0].geometry.location.lat + ',' + data.results[0].geometry.location.lng,
+          data: {
+          units: 'si'
+        },
+          dataType: 'jsonp',
+          success: function(data) {
+        $('.js-temp').text(data.currently.apparentTemperature + '°C');
+        $('.js-windsp').text(data.currently.windSpeed + 'm/s');
+        $('.js-icon').text(data.hourly.data[0].icon);
+        }
+
+        });
       }
     });
   });
@@ -88,4 +108,20 @@ function error(err) {
   console.warn('ERROR(' + err.code + '): ' + err.message);
 };
 
+var getWeatherData = function(lat, lng, callback) {
+  $.ajax({
+          url: 'https://api.forecast.io/forecast/4cbf11a0b6a5166782b8d4cb9d5defef/' + lat + ',' + lng,
+          data: {
+            units: 'si'
+          },
+          dataType: 'jsonp',
+          success: function(data) {
+            callback(data);
+          }
+
+        });
+}
+
 navigator.geolocation.getCurrentPosition(success, error, options);
+
+

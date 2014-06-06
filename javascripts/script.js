@@ -48,7 +48,7 @@ navigator.geolocation.getCurrentPosition(success, error, options);
 $('.js-custrom-adress').op('click', 'a' , function(event) {
 event.preventDefault();
 
-var address = $('input', 'js-custrom-adress').val();
+var address = $('input', '.js-custrom-adress').val();
 
 $.ajax({
     url: 'http://maps.googleapis.com/maps/api/geocode/json',

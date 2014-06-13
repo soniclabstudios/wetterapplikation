@@ -21,3 +21,8 @@
 	font-family: 'MeteoconsRegular';
 	content: attr(data-icon);
 }
+
+h1, dt {
+    font-family: arial;
+    
+}

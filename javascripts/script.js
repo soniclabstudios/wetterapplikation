@@ -26,30 +26,30 @@ function success(pos) {
 
 
   $.ajax({
-    url: 'https://api.forecast.io/forecast/4cbf11a0b6a5166782b8d4cb9d5defef/' + crd.latitude + ',' + crd.longitude,
-    data: {
-        units: 'si'
-    },
-    dataType: 'jsonp',
-    success: function(data) {
-        $('.js-temp').text(data.currently.apparentTemperature + '°C');
-        $('.js-windsp').text(data.currently.windSpeed + 'm/s');
+  	url: 'https://api.forecast.io/forecast/4cbf11a0b6a5166782b8d4cb9d5defef/' + crd.latitude + ',' + crd.longitude,
+  	data: {
+  		units: 'si'
+  	},
+  	dataType: 'jsonp',
+  	success: function(data) {
+  		$('.js-temp').text(data.currently.apparentTemperature + '°C');
+  		$('.js-windsp').text(data.currently.windSpeed + 'm/s');
       $('.js-symbol').text(weatherIcons[data.currently.icon]);
-    }
+  	}
 
   });
 
   $.ajax({
-    url: 'https://maps.googleapis.com/maps/api/geocode/json',
-    data: {
-        latlng: crd.latitude + ',' + crd.longitude,
-        sensor: true
-    },
-    success: function(data) {
-        $('.js-loc').text(data.results[0].formatted_address);
+  	url: 'https://maps.googleapis.com/maps/api/geocode/json',
+  	data: {
+  		latlng: crd.latitude + ',' + crd.longitude,
+  		sensor: true
+  	},
+  	success: function(data) {
+  		$('.js-loc').text(data.results[0].formatted_address);
       console.log(data);
 
-    }
+  	}
 
   });
 
@@ -123,5 +123,59 @@ var getWeatherData = function(lat, lng, callback) {
 }
 
 navigator.geolocation.getCurrentPosition(success, error, options);
+
+
+$.ajax({
+    url: 'https://maps.googleapis.com/maps/api/geocode/json',
+    data: {
+          address: 'Sao Paulo',
+          sensor: false
+    },
+    success: function(data) {
+      var lat = data.results[0].geometry.location.lat;
+      var lng = data.results[0].geometry.location.lng;
+
+      $.ajax({
+          url: 'https://api.forecast.io/forecast/4cbf11a0b6a5166782b8d4cb9d5defef/' + lat + ',' + lng,
+          data: {
+            units: 'si'
+          },
+          dataType: 'jsonp',
+          success: function(data) {
+            $('.js-temp-paulo').text(data.currently.summary + ' ' + data.currently.temperature + 'C°');
+          }
+
+        });
+
+    }
+
+  });
+
+$.ajax({
+    url: 'https://maps.googleapis.com/maps/api/geocode/json',
+    data: {
+          address: 'Rio de Janeiro',
+          sensor: false
+    },
+    success: function(data) {
+      var lat = data.results[0].geometry.location.lat;
+      var lng = data.results[0].geometry.location.lng;
+
+      $.ajax({
+          url: 'https://api.forecast.io/forecast/4cbf11a0b6a5166782b8d4cb9d5defef/' + lat + ',' + lng,
+          data: {
+            units: 'si'
+          },
+          dataType: 'jsonp',
+          success: function(data) {
+            $('.js-temp-janeiro').text(data.currently.summary + ' ' + data.currently.temperature + 'C°');
+          }
+
+        });
+
+    }
+
+  });
+
 
 

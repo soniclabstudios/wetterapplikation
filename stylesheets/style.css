@@ -14,15 +14,10 @@
 
 .symbol {
 	font-family: 'MeteoconsRegular';
-	font-size: 3em;
+	font-size: 5em;
 }
 
 .symbol:before {
 	font-family: 'MeteoconsRegular';
 	content: attr(data-icon);
-}
-
-h1, dt {
-    font-family: arial;
-    
 }

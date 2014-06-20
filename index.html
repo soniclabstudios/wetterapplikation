@@ -1,58 +1,59 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Meine Position</title>
+	<title>Main page</title>
 
-  <link rel="stylesheet" href="stylesheets/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 </head>
 <body>
 
-  <h1>Meine Position</h1>
-  <dl>
+<!-- Startseite -->
 
-    <dt>Address</dt>
-    <dd class="js-loc">-</dd>
+<div data-role="page" id="main">
 
-    <dt>Longitude</dt>
-    <dd class="js-long">-</dd>
+	<div data-role="panel" id="menu" data-display="push">
+		<ul data-role="listview">
+			<li>Main</li>
+			<li><a href="#custom">Custom page</a></li>
+		</ul>
+	</div><!-- /panel -->
 
-    <dt>Latitude</dt>
-    <dd class="js-lat">-</dd>
+	<div data-role="header">
+		<h1>Main</h1>
+		<a href="#menu" class="ui-btn ui-btn-left ui-btn-inline ui-mini ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-icon-notext">Menu</a>
+	</div><!-- /header -->
 
-    <dt>Accuracy</dt>
-    <dd class="js-acc">-</dd>
+	<div role="main" class="ui-content">
+		<p>Current position: <span class="js-current-position">-</span></p>
+		<p>Current address: <span class="js-loc-address">-</span></p>
+	</div><!-- /content -->
 
-    <dt>Temperature</dt>
-    <dd class="js-temp">-</dd>
+<!-- Erweiterte Ansicht -->
 
-    <dt>Wind Speed</dt>
-    <dd class="js-windsp">-</dd>
+<div data-role="page" id="custom">
 
-    <dt>Custom address</dt>
-    <dd class="js-custom-address">
-      <input type="text">
-      <a href="#">Search</a><br/>
-      <span class="js-cusadd-result"></span>
-    </dd>
+	<div data-role="panel" id="menucustom" data-display="push">
+		<ul data-role="listview">
+			<li><a href="#main">Main</a></li>
+			<li>Custom page</li>
+		</ul>
+	</div><!-- /panel -->
 
-    <dt>Symbol</dt>
-    <dd class="symbol js-symbol">)</dd>
+	<div data-role="header">
+		<h1>Custom page</h1>
+		<a href="#menucustom" class="ui-btn ui-btn-left ui-btn-inline ui-mini ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-icon-notext">Menu</a>
+	</div><!-- /header -->
 
-    <dt>Weather in Manaus</dt>
-    <dd class="js-weather-manaus"></dd>
+	<div role="main" class="ui-content">
+		<p>Page content goes here.</p>
+	</div><!-- /content -->
 
-    <dt>Weather in Sao Paulo</dt>
-    <dd class="js-weather-sao-paulo"></dd>
 
-  </dl>
+<script src="javascripts/service.js"></script>
 
-  <div id="out"></div>
-
-  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script src="javascripts/script.js"></script>
-  
 </body>
 </html>
